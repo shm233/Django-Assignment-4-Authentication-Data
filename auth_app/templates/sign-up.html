@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign | Up</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        overflow: hidden;
+      }
+      
+      /* Floating background shapes */
+      .bg-circle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.3;
+        filter: blur(60px);
+        animation: float 10s infinite ease-in-out;
+      }
+      
+      .circle1 {
+        width: 300px;
+        height: 300px;
+        background: #ff6ec4;
+        top: 10%;
+        left: 15%;
+      }
+      
+      .circle2 {
+        width: 250px;
+        height: 250px;
+        background: #7873f5;
+        bottom: 10%;
+        right: 15%;
+      }
+      
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(30px);
+        }
+      }
+      
+      .container {
+        position: relative;
+        width: 380px;
+        padding: 30px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        color: #fff;
+        z-index: 10;
+        animation: fadeIn 1s ease-in-out;
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 28px;
+        letter-spacing: 1px;
+      }
+      
+      .input-box {
+        margin-bottom: 15px;
+      }
+      
+      .input-box input {
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+      
+      .input-box textarea {
+        width: 100%;
+        min-height: 100px;
+        padding: 12px 15px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        font-size: 14px;
+        transition: 0.3s;
+        resize: none;
+        font-family: inherit;
+      }
+      
+      .input-box input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      
+      .input-box input:focus {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.02);
+      }
+      
+      .input-box textarea:focus {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.02);
+      }
+      
+      .input-box textarea::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      
+      .btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #ff6ec4, #7873f5);
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 10px;
+      }
+      
+      .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      
+      .footer {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 13px;
+      }
+      
+      .footer a {
+        color: #ff6ec4;
+        text-decoration: none;
+      }
+      
+      .footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bg-circle circle1"></div>
+    <div class="bg-circle circle2"></div>
+
+    <div class="container">
+      <h2>Create Account</h2>
+
+      <form class="" method="POST">
+        {% csrf_token %}
+        <div class="input-box">
+          <input name="username" type="text" placeholder="Desired Username" required />
+        </div>
+
+        <div class="input-box">
+          <input type="email" placeholder="Email Address" required />
+        </div>
+
+        <div class="input-box">
+          <textarea name="address" id="" placeholder="Your residential address"></textarea>
+        </div>
+
+        <div class="input-box">
+          <input name="password" type="password" placeholder="Password" required />
+        </div>
+
+        <div class="input-box">
+          <input name="password2" type="password" placeholder="Confirm Password" required />
+        </div>
+
+        <button class="btn" type="submit">Sign Up</button>
+      </form>
+
+      <div class="footer">
+        Already have an account? <a href="{% url 'sign_in' %}">Login</a>
+      </div>
+    </div>
+  </body>
+</html>

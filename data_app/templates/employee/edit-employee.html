@@ -1,0 +1,66 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+  <title>Employee | Update</title>
+
+  <h1>Update Employee Information</h1>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Employee Name</label>
+      <input name="name" value="{{ emp.name }}" type="text" class="form-control" id="name" placeholder="Please Enter Your Name" />
+    </div>
+    <div class="mb-3">
+      <label for="picture" class="form-label">Employee Picture</label>
+      <input name="picture" value="{{ emp.picture }}" type="file" class="form-control" id="picture" />
+      {% if emp.picture %}
+        <img src="{{ emp.picture.url }}" alt="Employee Picture" width="150" />
+      {% else %}
+        <p>No image uploaded</p>
+      {% endif %}
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input name="email" value="{{ emp.email }}" type="email" class="form-control" id="email" placeholder="Please Enter Your Email" />
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone</label>
+      <input name="phone" value="{{ emp.phone }}" type="tel" class="form-control" id="phone" placeholder="Input Contact Number" />
+    </div>
+    <div class="mb-3">
+      <label for="city" class="form-label">City</label>
+      <input name="city" value="{{ emp.city }}" type="text" class="form-control" id="city" placeholder="Input Your Resident City" />
+    </div>
+    <div class="mb-3">
+      <label for="department" class="form-label">Department</label>
+      <select name="department" class="form-select" id="department" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="hr" 
+        {% if employee.department == "hr" %}
+          selected
+        {% endif %}
+          >Human Resource</option>
+        <option value="acc" 
+        {% if employee.department == "acc" %}
+          selected
+        {% endif %}
+          >Accounting</option>
+        <option value="mgt" 
+        {% if employee.department == "mgt" %}
+          selected
+        {% endif %}
+          >Management</option>
+        <option value="it" 
+        {% if employee.department == "it" %}
+          selected
+        {% endif %}
+          >IT</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="salary" class="form-label">Salary</label>
+      <input name="salary" value="{{ emp.salary }}" type="number" class="form-control" id="salary" placeholder="Input Your Current Salary" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Employee</button>
+  </form>
+{% endblock %}

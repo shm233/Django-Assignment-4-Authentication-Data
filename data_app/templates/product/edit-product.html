@@ -1,0 +1,48 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+  <title>Edit | Product</title>
+
+  <h1>Edit Product</h1>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Product Name</label>
+      <input name="name" value="{{product.product_name}}" type="text" class="form-control" id="name" placeholder="Please Enter Your Name" required />
+    </div>
+    <div class="mb-3">
+      <label for="department" class="form-label">Category</label>
+      <select name="category" class="form-select" id="department" aria-label="Default select example" required>
+        <option selected>Open this select menu</option>
+        <option value="clothing" 
+        {% if product.category == "clothing" %}
+            selected
+        {% endif %}
+            >Clothing</option>
+        <option value="electronics" 
+        {% if product.category == "electronics" %}
+            selected
+        {% endif %}
+            >Electronics</option>
+        <option value="sports" 
+        {% if product.category == "sports" %}
+            selected
+        {% endif %}
+            >Sports</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Price</label>
+      <input name="price" value="{{product.price}}" type="number" class="form-control" id="email" placeholder="Please Enter Your Price" required />
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Quantity</label>
+      <input name="quantity" value="{{product.quantity}}" type="number" class="form-control" id="phone" placeholder="Input Quantity" required />
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea name="description" class="form-control" id="description">{{product.description}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Edit Product</button>
+  </form>
+{% endblock %}

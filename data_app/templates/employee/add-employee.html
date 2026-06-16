@@ -1,0 +1,45 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+  <title>Employee | Add</title>
+
+  <h1>Add Employee</h1>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Employee Name</label>
+      <input name="name" type="text" class="form-control" id="name" placeholder="Please Enter Your Name" required />
+    </div>
+    <div class="mb-3">
+      <label for="picture" class="form-label">Employee Picture</label>
+      <input name="picture" type="file" class="form-control" id="picture" required />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input name="email" type="email" class="form-control" id="email" placeholder="Please Enter Your Email" required />
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone</label>
+      <input name="phone" type="tel" class="form-control" id="phone" placeholder="Input Contact Number" required />
+    </div>
+    <div class="mb-3">
+      <label for="city" class="form-label">City</label>
+      <input name="city" type="text" class="form-control" id="city" placeholder="Input Your Resident City" required />
+    </div>
+    <div class="mb-3">
+      <label for="department" class="form-label">Department</label>
+      <select name="department" class="form-select" id="department" aria-label="Default select example" required>
+        <option selected>Open this select menu</option>
+        <option value="hr">Human Resource</option>
+        <option value="acc">Accounting</option>
+        <option value="mgt">Management</option>
+        <option value="it">IT</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="salary" class="form-label">Salary</label>
+      <input name="salary" type="number" class="form-control" id="salary" placeholder="Input Your Current Salary" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Employee</button>
+  </form>
+{% endblock %}

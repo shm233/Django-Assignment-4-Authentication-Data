@@ -1,0 +1,46 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+  <title>Add | Student</title>
+
+  <h1>Add Student</h1>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Student Name</label>
+      <input name="name" type="text" class="form-control" id="name" placeholder="Please Enter Your Name" required />
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Student Roll Number</label>
+      <input name="roll_number" type="text" class="form-control" id="name" placeholder="Please Enter Your Roll Number" required />
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Student Email</label>
+      <input name="email" type="email" class="form-control" id="name" placeholder="Please Enter Your Email Address" required />
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Course Name</label>
+      <input name="course" type="text" class="form-control" id="name" placeholder="Please Enter Your Course Name" required />
+    </div>
+    <div class="mb-3">
+      <label for="department" class="form-label">Year</label>
+      <select name="year" class="form-select" id="department" aria-label="Default select example" required>
+        <option selected>Open this select menu</option>
+        <option value="1st">1st Year</option>
+        <option value="2nd">2nd Year</option>
+        <option value="3rd">3rd Year</option>
+        <option value="4th">4th Year</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="department" class="form-label">Semester</label>
+      <select name="semester" class="form-select" id="department" aria-label="Default select example" required>
+        <option selected>Open this select menu</option>
+        <option value="1st">1st Semester</option>
+        <option value="2nd">2nd Semester</option>
+        <option value="3rd">3rd Semester</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Student</button>
+  </form>
+{% endblock %}

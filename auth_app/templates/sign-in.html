@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #141e30, #243b55);
+        overflow: hidden;
+      }
+      
+      /* Background floating blobs */
+      .bg-circle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.25;
+        filter: blur(60px);
+        animation: float 10s infinite ease-in-out;
+      }
+      
+      .circle1 {
+        width: 320px;
+        height: 320px;
+        background: #00c6ff;
+        top: 12%;
+        left: 18%;
+      }
+      
+      .circle2 {
+        width: 260px;
+        height: 260px;
+        background: #ff4ecd;
+        bottom: 12%;
+        right: 18%;
+      }
+      
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(35px);
+        }
+      }
+      
+      .container {
+        position: relative;
+        width: 360px;
+        padding: 35px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+        color: #fff;
+        z-index: 10;
+        animation: fadeIn 0.9s ease-in-out;
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .container h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 28px;
+        letter-spacing: 1px;
+      }
+      
+      .input-box {
+        margin-bottom: 15px;
+      }
+      
+      .input-box input {
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+      
+      .input-box input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      
+      .input-box input:focus {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.02);
+      }
+      
+      .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        margin-bottom: 15px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      
+      .options label {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+      }
+      
+      .options a {
+        color: #00c6ff;
+        text-decoration: none;
+      }
+      
+      .options a:hover {
+        text-decoration: underline;
+      }
+      
+      .btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #00c6ff, #ff4ecd);
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 5px;
+      }
+      
+      .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      
+      .footer {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 13px;
+      }
+      
+      .footer a {
+        color: #ff4ecd;
+        text-decoration: none;
+      }
+      
+      .footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bg-circle circle1"></div>
+    <div class="bg-circle circle2"></div>
+
+    <div class="container">
+      <h2>Welcome Back</h2>
+
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="input-box">
+          <input name="username" type="text" placeholder="Email Address" required />
+        </div>
+
+        <div class="input-box">
+          <input name="password" type="password" placeholder="Password" required />
+        </div>
+
+        <div class="options">
+          <label><input type="checkbox" />Remember me</label>
+
+          <a href="#">Forgot Password?</a>
+        </div>
+
+        <button class="btn" type="submit">Sign In</button>
+      </form>
+
+      <div class="footer">
+        Don’t have an account? <a href="{% url 'sign_up' %}">Sign Up</a>
+      </div>
+    </div>
+  </body>
+</html>
